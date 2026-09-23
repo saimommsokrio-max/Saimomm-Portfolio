@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Zap, TrendingUp, Megaphone, Wrench, Users } from "lucide-react";
+import { Zap, TrendingUp, Wrench, Users } from "lucide-react";
 
 const SKILL_CATEGORIES = [
   {
@@ -11,16 +11,6 @@ const SKILL_CATEGORIES = [
     description: "End-to-end B2B sales cycle management — from prospecting through closing.",
     level: 95,
     skills: ["Lead Generation & Prospecting", "B2B Sales & Client Acquisition", "Sales Negotiation & Closing", "Proposal Presentation", "CRM & Pipeline Management", "Objection Handling"],
-  },
-  {
-    icon: Megaphone,
-    color: "text-secondary",
-    bg: "bg-secondary/10",
-    border: "border-secondary/20",
-    title: "Digital Marketing",
-    description: "Data-driven campaigns across SEO, social, and email that generate qualified pipeline.",
-    level: 82,
-    skills: ["SEO & Content Strategy", "Social Media Marketing", "Email Campaign Management", "Market Research", "Competitor Analysis", "LinkedIn Outreach"],
   },
   {
     icon: Users,
@@ -77,7 +67,7 @@ export function Skills() {
             viewport={{ once: true }}
             className="text-muted-foreground text-lg max-w-md lg:text-right"
           >
-            A toolkit combining modern sales strategy, digital marketing, and leadership to drive sustainable growth.
+            A toolkit combining modern sales strategy, relationship building, and leadership to drive sustainable growth.
           </motion.p>
         </div>
 
@@ -87,44 +77,45 @@ export function Skills() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid md:grid-cols-2 gap-8"
+          className="grid md:grid-cols-3 gap-8"
         >
           {SKILL_CATEGORIES.map((cat, idx) => (
             <motion.div
               key={idx}
               variants={item}
-              className={`p-8 rounded-2xl bg-background border ${cat.border} hover:shadow-lg transition-all group`}
+              className={`p-8 rounded-2xl bg-background border ${cat.border} hover:shadow-lg transition-all group flex flex-col justify-between`}
             >
               {/* Category header */}
-              <div className="flex items-start gap-4 mb-6">
-                <div className={`h-12 w-12 rounded-xl ${cat.bg} flex items-center justify-center shrink-0`}>
-                  <cat.icon className={`h-6 w-6 ${cat.color}`} />
+              <div>
+                <div className="flex items-start gap-4 mb-6">
+                  <div className={`h-12 w-12 rounded-xl ${cat.bg} flex items-center justify-center shrink-0`}>
+                    <cat.icon className={`h-6 w-6 ${cat.color}`} />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-lg font-bold text-foreground mb-1">{cat.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{cat.description}</p>
+                  </div>
                 </div>
-                <div className="flex-1 min-w-0">
-                  <h3 className="text-lg font-bold text-foreground mb-1">{cat.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{cat.description}</p>
-                </div>
-              </div>
 
-              {/* Proficiency bar */}
-              <div className="mb-6">
-                <div className="flex justify-between text-xs font-medium mb-2">
-                  <span className="text-muted-foreground">Proficiency</span>
-                  <span className={cat.color}>{cat.level}%</span>
-                </div>
-                <div className="h-1.5 bg-muted rounded-full overflow-hidden">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${cat.level}%` }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
-                    className={`h-full rounded-full bg-gradient-to-r ${
-                      idx === 0 ? "from-primary to-primary/70" :
-                      idx === 1 ? "from-secondary to-secondary/70" :
-                      idx === 2 ? "from-chart-3 to-chart-3/70" :
-                      "from-chart-4 to-chart-4/70"
-                    }`}
-                  />
+                {/* Proficiency bar */}
+                <div className="mb-6">
+                  <div className="flex justify-between text-xs font-medium mb-2">
+                    <span className="text-muted-foreground">Proficiency</span>
+                    <span className={cat.color}>{cat.level}%</span>
+                  </div>
+                  <div className="h-1.5 bg-muted rounded-full overflow-hidden">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${cat.level}%` }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
+                      className={`h-full rounded-full bg-gradient-to-r ${
+                        idx === 0 ? "from-primary to-primary/70" :
+                        idx === 1 ? "from-chart-3 to-chart-3/70" :
+                        "from-chart-4 to-chart-4/70"
+                      }`}
+                    />
+                  </div>
                 </div>
               </div>
 
