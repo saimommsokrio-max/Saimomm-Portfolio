@@ -21,9 +21,9 @@ export const PROJECTS = [
   },
   {
     id: 3,
-    title: "Omnichannel Digital Marketing Campaign",
-    description: "Led a cross-functional team to launch an integrated marketing campaign across LinkedIn, email, and industry forums, driving a 150% ROI.",
-    tags: ["Digital Marketing", "SEO", "Team Leadership"],
+    title: "Multi-Channel B2B Outbound Campaign",
+    description: "Led a cross-functional team to launch an integrated outbound campaign across LinkedIn, email, and industry networks, driving a 150% ROI.",
+    tags: ["B2B Sales", "Lead Generation", "Team Leadership"],
     image: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&q=80&w=800&h=500"
   }
 ];

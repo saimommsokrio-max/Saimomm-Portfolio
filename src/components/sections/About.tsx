@@ -46,7 +46,7 @@ export function About() {
             <p className="text-lg md:text-xl text-foreground leading-relaxed mb-6 font-medium">
               Business Development & Sales professional with{" "}
               <span className="text-primary font-semibold">3+ years of experience</span> in client acquisition,
-              digital marketing, and relationship management across tech and service sectors.
+              strategic sales, and relationship management across tech and service sectors.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-8">
               Skilled in lead generation, market research, pipeline management, and closing deals. Proven track
