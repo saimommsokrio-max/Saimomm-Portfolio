@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
-import { Briefcase, Calendar, ChevronDown, ChevronUp } from "lucide-react";
-import { useState } from "react";
+import { Briefcase, Calendar, MapPin } from "lucide-react";
 
 const EXPERIENCES = [
   {
@@ -8,14 +7,14 @@ const EXPERIENCES = [
     company: "Sokrio Technologies Limited",
     date: "Oct 2025 – Present",
     type: "Full-time · Tech / SaaS",
-    color: "bg-primary",
-    highlight: "Current Role",
+    location: "Dhaka, Bangladesh",
+    current: true,
     responsibilities: [
-      "Manage end-to-end B2B sales pipeline: lead generation → meetings → demos → proposals → negotiation → closing",
-      "Generate leads through cold outreach, LinkedIn, and referrals targeting corporate decision-makers",
-      "Maintain and track pipeline using CRM, Excel, and Google Sheets with weekly reporting to leadership",
-      "Build strong relationships with corporate clients to ensure retention and upsell opportunities",
-      "Collaborate with product and technical teams to deliver tailored solutions for enterprise accounts",
+      "Manage end-to-end B2B sales pipeline: prospect identification → discovery calls → solution demos → proposals → negotiation → closing.",
+      "Execute high-converting outreach targeting mid-to-enterprise corporate decision-makers and C-level executives.",
+      "Track and analyze sales velocity, pipeline value, and deal stages using CRM, Excel, and Google Sheets.",
+      "Cultivate and maintain long-term client relationships to drive account retention, renewals, and upselling.",
+      "Partner with technical and product teams to customize SaaS presentations and satisfy enterprise client requirements.",
     ],
   },
   {
@@ -23,13 +22,13 @@ const EXPERIENCES = [
     company: "Pixell Coder",
     date: "May 2024 – Sep 2025",
     type: "Full-time · Digital Agency",
-    color: "bg-secondary",
-    highlight: null,
+    location: "Dhaka, Bangladesh",
+    current: false,
     responsibilities: [
-      "Conducted market research and competitor analysis to identify new business opportunities",
-      "Contributed to client acquisition and revenue growth through targeted outreach strategies",
-      "Worked on SEO, social media marketing, and email campaigns for multiple clients",
-      "Increased lead inquiries by 40% through targeted LinkedIn and content marketing campaigns",
+      "Conducted comprehensive market research and competitive intelligence to identify high-margin sales opportunities.",
+      "Accelerated client acquisition and revenue through tailored enterprise outreach strategies.",
+      "Increased qualified lead inquiries by 40% through targeted outreach and value-driven pitching.",
+      "Delivered strategic sales presentations and closed high-value contracts with corporate clients.",
     ],
   },
   {
@@ -37,13 +36,13 @@ const EXPERIENCES = [
     company: "Zam Zam Group",
     date: "July 2023 – March 2024",
     type: "Full-time · FMCG",
-    color: "bg-chart-3",
-    highlight: null,
+    location: "Dhaka, Bangladesh",
+    current: false,
     responsibilities: [
-      "Developed and executed sales strategies expanding market presence across Dhaka territories",
-      "Managed visits to 100+ outlets weekly, expanding distribution network from 60 to 150+ outlets",
-      "Led a team of 20 field sales representatives, setting daily targets and reviewing performance",
-      "Coordinated with cross-functional teams (sales, marketing, operations) to ensure stock availability",
+      "Developed and executed sales strategies, expanding retail distribution across Dhaka metropolitan territories.",
+      "Scaled the retail distribution network from 60 to 150+ active outlets through disciplined territory management.",
+      "Led, trained, and mentored a team of 20 field sales representatives, setting daily targets and reviewing performance metrics.",
+      "Coordinated with supply chain and cross-functional teams to ensure uninterrupted inventory fulfillment.",
     ],
   },
   {
@@ -51,113 +50,102 @@ const EXPERIENCES = [
     company: "Bibahobd.com",
     date: "Feb 2022 – Jun 2023",
     type: "Full-time · Matrimony Platform",
-    color: "bg-chart-4",
-    highlight: null,
+    location: "Dhaka, Bangladesh",
+    current: false,
     responsibilities: [
-      "Increased client registrations through digital campaigns, social media, and referral networks",
-      "Maintained 35%+ lead-to-client conversion rate — top performer on the sales team",
-      "Led and supervised a sales team with daily briefings, training, and performance tracking",
-      "Managed objection handling and closing processes for premium membership packages",
+      "Achieved a 35%+ lead-to-client conversion rate, consistently ranking as the top sales performer across the company.",
+      "Supervised a high-performing sales team with daily target tracking, objection-handling workshops, and quality audits.",
+      "Exceeded sales targets by 100% and earned the 'Best Sales Performer' award for outstanding contribution to company revenue.",
+      "Managed premium membership package sales through consultative phone consultations and high-touch closing.",
     ],
   },
 ];
 
 export function Experience() {
-  const [expanded, setExpanded] = useState<number | null>(0);
-
   return (
-    <section id="experience" className="py-24 md:py-32 relative bg-background">
-      <div className="container mx-auto px-4 md:px-8">
+    <section id="experience" className="py-20 md:py-28 bg-background">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        {/* Section Heading */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          className="mb-16"
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.4 }}
+          className="mb-14 text-center sm:text-left"
         >
-          <p className="text-sm font-bold tracking-widest uppercase text-primary mb-3">Career Journey</p>
-          <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">Work Experience</h2>
-          <div className="w-12 h-1 bg-primary" />
+          <p className="text-xs font-bold tracking-widest uppercase text-primary mb-2">Career Journey</p>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-foreground">
+            Work Experience
+          </h2>
+          <div className="w-12 h-1 bg-primary mt-3 mx-auto sm:mx-0" />
         </motion.div>
 
-        <div className="max-w-4xl space-y-4">
+        {/* Vertical Timeline */}
+        <div className="relative border-l-2 border-border/80 ml-3 sm:ml-6 pl-6 sm:pl-10 space-y-12">
           {EXPERIENCES.map((exp, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.5, delay: index * 0.08 }}
-              className="rounded-2xl bg-card border border-border hover:border-primary/30 transition-all overflow-hidden"
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.4, delay: index * 0.08 }}
+              className="relative group"
             >
-              {/* Header — always visible */}
-              <button
-                className="w-full text-left p-6 flex flex-col sm:flex-row sm:items-center gap-4"
-                onClick={() => setExpanded(expanded === index ? null : index)}
-              >
-                {/* Color dot */}
-                <div className={`h-3 w-3 rounded-full shrink-0 ${exp.color} mt-1 hidden sm:block`} />
+              {/* Timeline Marker Node */}
+              <div
+                className={`absolute -left-[31px] sm:-left-[47px] top-1.5 h-4 w-4 rounded-full border-2 border-background ring-4 ${
+                  exp.current
+                    ? "bg-primary ring-primary/20"
+                    : "bg-muted-foreground/40 ring-border group-hover:bg-primary group-hover:ring-primary/20 transition-colors"
+                }`}
+              />
 
-                <div className="flex-1 min-w-0">
-                  <div className="flex flex-wrap items-center gap-2 mb-1">
-                    <h3 className="text-lg md:text-xl font-bold text-foreground">{exp.role}</h3>
-                    {exp.highlight && (
-                      <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">
-                        {exp.highlight}
-                      </span>
-                    )}
+              {/* Experience Card Content */}
+              <div className="p-6 sm:p-7 rounded-2xl bg-card border border-border shadow-2xs hover:border-primary/40 hover:shadow-xs transition-all">
+                
+                {/* Header Row */}
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+                  <div>
+                    <div className="flex flex-wrap items-center gap-2 mb-1">
+                      <h3 className="text-lg sm:text-xl font-bold text-foreground">
+                        {exp.role}
+                      </h3>
+                      {exp.current && (
+                        <span className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20">
+                          Current
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex items-center gap-2 text-sm font-semibold text-primary">
+                      <Briefcase size={15} />
+                      <span>{exp.company}</span>
+                      <span className="text-muted-foreground font-normal">·</span>
+                      <span className="text-muted-foreground font-normal text-xs">{exp.type}</span>
+                    </div>
                   </div>
-                  <div className="flex flex-wrap items-center gap-3 text-sm">
-                    <span className="flex items-center gap-1.5 font-semibold text-primary">
-                      <Briefcase className="h-3.5 w-3.5" />
-                      {exp.company}
-                    </span>
-                    <span className="text-muted-foreground">·</span>
-                    <span className="text-muted-foreground">{exp.type}</span>
+
+                  {/* Date Badge */}
+                  <div className="inline-flex items-center gap-1.5 text-xs font-semibold text-muted-foreground bg-muted/60 px-3 py-1.5 rounded-full border border-border/60 self-start sm:self-auto">
+                    <Calendar size={13} />
+                    <span>{exp.date}</span>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3 shrink-0">
-                  <div className="flex items-center gap-1.5 text-xs text-muted-foreground bg-background border border-border px-3 py-1.5 rounded-full">
-                    <Calendar className="h-3.5 w-3.5" />
-                    {exp.date}
-                  </div>
-                  {expanded === index ? (
-                    <ChevronUp className="h-4 w-4 text-muted-foreground" />
-                  ) : (
-                    <ChevronDown className="h-4 w-4 text-muted-foreground" />
-                  )}
-                </div>
-              </button>
-
-              {/* Expandable responsibilities */}
-              <motion.div
-                initial={false}
-                animate={{ height: expanded === index ? "auto" : 0, opacity: expanded === index ? 1 : 0 }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="overflow-hidden"
-              >
-                <div className="px-6 pb-6 pt-0">
-                  <div className="border-t border-border/50 pt-5">
-                    <ul className="space-y-3">
-                      {exp.responsibilities.map((resp, i) => (
-                        <motion.li
-                          key={i}
-                          initial={{ opacity: 0, x: -10 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: i * 0.06 }}
-                          className="flex items-start gap-3 text-muted-foreground"
-                        >
-                          <span className={`mt-2 h-1.5 w-1.5 rounded-full shrink-0 ${exp.color}`} />
-                          <span className="leading-relaxed text-sm md:text-base">{resp}</span>
-                        </motion.li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </motion.div>
+                {/* Responsibilities Bullets */}
+                <ul className="space-y-2.5 pt-3 border-t border-border/50">
+                  {exp.responsibilities.map((bullet, i) => (
+                    <li key={i} className="flex items-start gap-2.5 text-sm sm:text-base text-muted-foreground leading-relaxed">
+                      <span className="h-1.5 w-1.5 rounded-full bg-primary shrink-0 mt-2" />
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </motion.div>
           ))}
         </div>
+
       </div>
     </section>
   );

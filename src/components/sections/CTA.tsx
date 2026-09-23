@@ -1,117 +1,96 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Mail, Linkedin, Phone } from "lucide-react";
+import { ArrowRight, Mail, Linkedin, Phone, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const CHANNELS = [
   {
     icon: Mail,
-    label: "Email me directly",
+    label: "Email Me",
     value: "sarjiaadnan@gmail.com",
     href: "mailto:sarjiaadnan@gmail.com",
-    color: "text-primary",
-    bg: "bg-primary/10",
   },
   {
     icon: Linkedin,
-    label: "Connect on LinkedIn",
+    label: "LinkedIn",
     value: "sharjia-adnan-saimomm",
     href: "https://www.linkedin.com/in/sharjia-adnan-saimomm",
-    color: "text-secondary",
-    bg: "bg-secondary/10",
   },
   {
     icon: Phone,
-    label: "Call or WhatsApp",
+    label: "Call / WhatsApp",
     value: "+8801814311577",
     href: "tel:+8801814311577",
-    color: "text-chart-3",
-    bg: "bg-chart-3/10",
   },
 ];
 
 export function CTA() {
   return (
-    <section className="py-24 md:py-32 relative overflow-hidden">
-      {/* Gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-background to-secondary/10 pointer-events-none" />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-secondary/30 to-transparent" />
+    <section className="py-20 md:py-28 bg-muted/40 border-y border-border">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-80px" }}
+          transition={{ duration: 0.4 }}
+        >
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold tracking-wide uppercase mb-6">
+            <span className="w-2 h-2 rounded-full bg-primary" />
+            Let's Collaborate
+          </div>
 
-      <div className="container mx-auto px-4 md:px-8 relative">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.7 }}
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary border border-primary/20 mb-8 text-sm font-semibold">
-              <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              Available for new opportunities
-            </div>
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-foreground mb-6">
+            Ready to Drive Business Growth Together?
+          </h2>
 
-            <h2 className="text-4xl md:text-6xl lg:text-7xl font-display font-bold text-foreground mb-6 leading-tight">
-              Let's Work{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
-                Together
-              </span>
-            </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
+            Whether you are looking to scale B2B sales pipelines, expand client networks, or discuss a career opportunity — I'd be excited to connect.
+          </p>
 
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed">
-              Whether you're looking for a driven sales professional, need a business development strategy, or
-              just want to connect — I'd love to hear from you.
-            </p>
+          <div className="flex flex-wrap items-center justify-center gap-4 mb-14">
+            <Button
+              asChild
+              size="lg"
+              className="h-12 px-8 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 font-medium text-base shadow-xs hover:shadow-sm transition-all"
+            >
+              <a href="#contact">
+                Send a Message <ArrowRight className="ml-2 h-4 w-4" />
+              </a>
+            </Button>
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="h-12 px-8 rounded-full border-border hover:bg-muted font-medium text-base text-foreground transition-colors"
+            >
+              <a href="/SHARJIA_ADNAN_SAIMOMM.pdf" download>
+                Download CV <Download className="ml-2 h-4 w-4" />
+              </a>
+            </Button>
+          </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-              <Button
-                asChild
-                size="lg"
-                className="h-14 px-10 text-base font-semibold shadow-xl shadow-primary/25 hover:shadow-primary/40 transition-shadow"
+          {/* 3 Direct Channel Cards */}
+          <div className="grid sm:grid-cols-3 gap-4">
+            {CHANNELS.map((item, i) => (
+              <a
+                key={i}
+                href={item.href}
+                target={item.href.startsWith("http") ? "_blank" : undefined}
+                rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                className="group p-5 rounded-2xl bg-card border border-border shadow-2xs hover:border-primary/40 hover:shadow-xs transition-all flex flex-col items-center gap-2.5 text-center"
               >
-                <a href="#contact">
-                  Send a Message <ArrowRight className="ml-2 h-5 w-5" />
-                </a>
-              </Button>
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="h-14 px-10 text-base font-semibold border-primary/20 hover:bg-primary/5"
-              >
-                <a href="/SHARJIA_ADNAN_SAIMOMM.pdf" download>
-                  Download My CV
-                </a>
-              </Button>
-            </div>
-
-            {/* Channel cards */}
-            <div className="grid sm:grid-cols-3 gap-4">
-              {CHANNELS.map(({ icon: Icon, label, value, href, color, bg }, i) => (
-                <motion.a
-                  key={i}
-                  href={href}
-                  target={href.startsWith("http") ? "_blank" : undefined}
-                  rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="group flex flex-col items-center gap-3 p-6 rounded-2xl bg-card border border-border hover:border-primary/30 hover:shadow-lg transition-all"
-                >
-                  <div className={`h-12 w-12 rounded-xl ${bg} flex items-center justify-center group-hover:scale-110 transition-transform`}>
-                    <Icon className={`h-5 w-5 ${color}`} />
-                  </div>
-                  <div className="text-xs font-bold tracking-wider uppercase text-muted-foreground">
-                    {label}
-                  </div>
-                  <div className={`text-sm font-semibold ${color} break-all text-center`}>
-                    {value}
-                  </div>
-                </motion.a>
-              ))}
-            </div>
-          </motion.div>
-        </div>
+                <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:scale-105 transition-transform">
+                  <item.icon size={18} />
+                </div>
+                <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                  {item.label}
+                </div>
+                <div className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors break-all">
+                  {item.value}
+                </div>
+              </a>
+            ))}
+          </div>
+        </motion.div>
       </div>
     </section>
   );
